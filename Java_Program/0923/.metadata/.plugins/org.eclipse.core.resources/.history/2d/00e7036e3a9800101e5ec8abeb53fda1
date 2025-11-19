@@ -1,0 +1,27 @@
+package sec01;
+class AA{
+	AA(){
+		System.out.println("생성자AA");
+	}
+	AA(int x){
+		System.out.println("생성자AA"+ x);
+	}
+}
+
+class BB extends AA{
+	BB(){
+		System.out.println("생성자BB");
+	}
+	BB(int x){
+		System.out.println("생성자BB"+ x);
+	}
+}
+
+
+
+public class ConstructorTest {
+	public static void main(String[] args) {
+		BB b = new BB(10);
+	}
+
+}

@@ -1,0 +1,12 @@
+package sec02;
+
+public class InheritanceTest {
+
+	public static void main(String[] args) {
+		Employee emp = new Employee("강길동", 100000);
+		Manager mng = new Manager("고길동", 200000, 50000);
+		Executive exc = new Executive("홍길동", 400000, 100000);
+
+	}
+
+}

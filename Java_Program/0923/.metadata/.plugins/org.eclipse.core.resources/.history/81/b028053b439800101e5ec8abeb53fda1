@@ -1,0 +1,27 @@
+package sec02;
+
+public class Executive extends Employee {
+	protected int bonus;
+	
+	public Executive (String name, int salary, int Bonus) {
+		super(name, salary);
+		this.bonus = bonus;
+	}
+	
+	public int getBonus() {
+		return bonus;
+	}
+	
+	public int raiseSalary() {
+		int increased_salary;
+		increased_salary = (int)(salary * 1.3);
+		return increased_salary;
+	}
+
+
+	public String showInfo() {
+		String result = super.showInfo();
+		result += "\n보너스: "+ bonus;
+		return result;
+	}
+}

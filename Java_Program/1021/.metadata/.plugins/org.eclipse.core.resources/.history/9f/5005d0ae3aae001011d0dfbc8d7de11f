@@ -1,0 +1,29 @@
+package mid;
+
+class A{
+	A(){
+		System.out.println("생성자A");
+	}
+	A(String name){
+		System.out.println("생성자A" + name);
+	}
+}
+
+class B extends A{
+	B(){
+		System.out.println("생성자B");
+	}
+	B(String name){
+		super(name);
+		System.out.println("생성자B"+name);
+	}
+}
+
+public class ConTest {
+
+	public static void main(String[] args) {
+		// 자식 객체 생성
+		B b = new B("김로령리균충");
+	}
+
+}

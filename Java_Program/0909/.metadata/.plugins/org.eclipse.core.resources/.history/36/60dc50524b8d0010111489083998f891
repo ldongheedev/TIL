@@ -1,0 +1,33 @@
+package sec02;
+
+import java.util.Scanner;
+
+public class CalculatorTest {
+
+	public static void main(String[] args) {
+		Scanner t = new Scanner(System.in);
+		Calculator r = null;
+		
+		System.out.print("menu select 1)+ 2)- 3)* 4) / : ");
+		int select = t.nextInt();
+		switch(select) {
+		case 1:
+			r=new Calculator("+",10, 20);
+			r.calculatorInfo(r.num1, r.num2, select);
+		case 2:
+			r=new Calculator("-",10,20);
+			r.calculatorInfo(r.num1, r.num2 , select);
+		case 3:
+			r= new Calculator("*", 10, 20);
+			r.calculatorInfo(r.num1, r.num2, select);
+		case 4:
+			r= new Calculator("/", 10, 20);
+			r.calculatorInfo(r.num1, r.num2, select);
+			
+			break;
+			default:break;
+		}
+		r.printResult();
+	}
+
+}

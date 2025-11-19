@@ -1,0 +1,37 @@
+package app;
+
+import lib.Calculator;
+
+class GoodCalc extends Calculator{
+
+	@Override
+	public int add(int a, int b) {
+		// TODO Auto-generated method stub
+		return a+b;
+	}
+
+	@Override
+	public int sub(int a, int b) {
+		// TODO Auto-generated method stub
+		return a-b;
+	}
+
+	@Override
+	public double avg(int[] arr) {
+		// TODO Auto-generated method stub
+		int sum = add;
+		double average;
+		// 빈 곳 채우기
+		average = sum / 2;
+		return 0;
+	}
+	
+}
+public class GoodCalcTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

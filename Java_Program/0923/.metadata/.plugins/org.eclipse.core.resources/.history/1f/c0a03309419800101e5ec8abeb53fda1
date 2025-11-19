@@ -1,0 +1,27 @@
+package sec02;
+
+public class Employee {
+	protected String name;
+	protected int salary;
+	
+	public Employee(String name, int salary) {
+		this.name=name;
+		this.salary=salary;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+
+	public int getSalary() {
+		return salary;
+	}
+	
+	public int raiseSalary() {
+		int increase_salary;
+		
+	}
+
+	
+}

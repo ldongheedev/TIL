@@ -1,0 +1,25 @@
+package sec02;
+
+import java.util.*;
+
+public class DivideByZeroTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner s = new Scanner(System.in);
+		//주요 메소드 : next(), nextInt(), nextDouble(), nextLine()
+		int x, y, result = 0;
+		System.out.print("피젯수: ");
+		x = s.nextInt();
+		System.out.print("젯수: ");
+		y =  s.nextInt();
+		
+		try {
+			result=x/y;
+		} catch(ArithmeticException e) {
+			System.out.println("0으로 나눌 수 없음");
+		}
+		System.out.println(result);
+	}
+
+}

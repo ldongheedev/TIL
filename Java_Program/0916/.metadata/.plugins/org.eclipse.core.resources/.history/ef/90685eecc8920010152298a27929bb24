@@ -1,0 +1,34 @@
+package sec02;
+
+import java.util.Scanner;
+
+public class UserTest {
+
+	public static void main(String[] args) {
+		User[] list = new User[20];
+		Scanner scanner = new Scanner(System.in);
+		String id, pw;
+		
+		while(true){
+			User.show();
+			int menu = scanner.nextInt();
+			switch (menu) {
+			case 1:
+				System.out.println("id: ");
+				id = scanner.next();
+				System.out.println("pw: ");
+				pw = scanner.next();
+				list[User.cnt] = new
+				break;
+			case 2:
+				break;
+			case 3:
+				System.out.println("Exit");
+				System.exit(0);
+				
+			}
+		}
+
+	}
+
+}

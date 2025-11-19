@@ -1,0 +1,5 @@
+package sec02;
+
+public abstract class Student {
+
+}

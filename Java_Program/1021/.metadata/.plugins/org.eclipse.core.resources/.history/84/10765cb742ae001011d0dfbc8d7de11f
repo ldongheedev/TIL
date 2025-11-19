@@ -1,0 +1,19 @@
+package sec01;
+
+import javax.swing.*;
+
+public class HelloFrame extends JFrame {
+
+	//생성자
+	HelloFrame(){
+		setTitle("엑스포에 오신 것을 환영합니다.");
+		setSize(300, 300);
+		setVisible(true);
+	}
+	
+	public static void main(String[] args) {
+		
+		HelloFrame h=new HelloFrame();
+	}
+
+}

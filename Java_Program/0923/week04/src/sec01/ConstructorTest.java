@@ -1,0 +1,42 @@
+package sec01;
+class AA{
+	AA(){
+		System.out.println("생성자AA");
+	}
+	AA(int x){
+		System.out.println("생성자AA"+x);
+	}
+	AA(int x, int y){
+		System.out.println("생성자AA"+ x + y);
+	}
+}
+
+class BB extends AA{
+	BB(){
+		System.out.println("생성자BB");
+	}
+	BB(int x){
+		super(x);
+		System.out.println("생성자BB"+ x);
+	}
+	BB(int x, int y){
+		super(x, y);
+		System.out.println("생성자BB"+ x + y);
+	}
+}
+
+
+
+public class ConstructorTest {
+	public static void main(String[] args) {
+		//부모객체 생성
+		// AA a1 = new AA(10);
+		// AA a2 = new AA(10);
+		
+		// 자식객체 생성
+		//BB b = new BB();
+		BB b2 = new BB(20);
+		BB b3 = new BB(20, 12);
+	}
+
+}

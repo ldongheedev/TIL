@@ -1,0 +1,86 @@
+//2022136022 이동희
+package sec01;
+
+public class Student2 {
+
+		//멤버변수 : 이름(name), 전공(major), 학점(credit)..
+		String name;
+		String major;
+		String credit;
+		
+		//생성자
+		Student2(String name, String major)
+		{
+			this.name=name;
+			this.major=major;
+		}
+		
+		Student2(String name, String major, String credit)
+		{
+			this(name, major);
+			this.credit=credit;
+		}
+		
+		// 접근자(getter)/변경자(setter) 메소드
+		
+		public String getName() {
+			return name;
+		}
+
+		public String getMajor() {
+			return major;
+		}
+
+		public String getCredit() {
+			return credit;
+		}
+
+		public void setName(String name) {
+			this.name = name;
+		}
+
+		public void setMajor(String major) {
+			this.major = major;
+		}
+
+		public void setCredit(String credit) {
+			this.credit = credit;
+		}
+		
+		//멤버메소드 정의 : 이수학점은 120학점이항이면 "졸업가능" 그렇지 않으면 "졸업불가능"
+		
+		void showInfo2(String credit)
+		{
+			int tmp = Integer.parseInt(credit); //문자열을 정수로 형변환
+			if(tmp >= 120) {
+			System.out.println("졸업가능");
+			}else {
+				System.out.println("졸업불가능");
+			}
+		}
+
+		//출력 메소드 1. 리턴값이 없는 형태
+		void showInfo()
+		{
+			System.out.println("name : " + name);
+			System.out.println("major : " + major);
+			System.out.println("credit : " + credit);
+		}
+		
+		//출력 메소드 2. 리턴값이 있는 형태
+		String toStr()
+		{
+			return name+major;
+			
+		}
+		public String toString()
+		{
+			return name+major;
+		}
+
+		public static void main(String[] args) {
+			
+		}
+
+
+}

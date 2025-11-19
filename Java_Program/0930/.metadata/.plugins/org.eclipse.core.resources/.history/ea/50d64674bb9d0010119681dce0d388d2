@@ -1,0 +1,25 @@
+package sec01;
+
+class Shape{
+	String name;
+	void draw() {
+		System.out.println("Shape");
+	}
+}
+
+
+
+class Rect extends Shape {
+	void draw() {
+		System.out.println("Rect");
+	}
+}
+
+
+
+public class ShapeTest {
+	public static void main(String[] args) {
+	Rect r = new Rect();
+	r.draw();
+	}
+}

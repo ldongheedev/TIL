@@ -1,0 +1,9 @@
+package sec02;
+
+public class Manager extends Employee {
+	protected int bonus;
+	
+	public Manager (int Bonus) {
+		
+	}
+}

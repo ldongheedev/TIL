@@ -1,0 +1,82 @@
+package sec01;
+
+import java.util.*;
+
+abstract class Shape{
+	String name;
+	abstract void draw();
+	
+	abstract void getArea();
+	abstract void showInfo();
+	
+	String getName() { //일반메소드
+		return name;
+	}
+
+}
+
+
+class Rect extends Shape {
+
+	@Override
+	void draw() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	void getArea() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	void showInfo() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	String getName() {
+		// TODO Auto-generated method stub
+		return super.getName();
+	}
+	
+}
+
+class Circle extends Shape{
+
+	@Override
+	void draw() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	void getArea() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	void showInfo() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	String getName() {
+		// TODO Auto-generated method stub
+		return super.getName();
+	}
+	
+}
+
+public class ShapeTest {
+	public static void main(String[] args) {
+	Rect r = new Rect();
+	r.draw();
+//	Shape s = new Shape();
+	}
+}
+

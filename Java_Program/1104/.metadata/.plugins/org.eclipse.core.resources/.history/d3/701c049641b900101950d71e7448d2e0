@@ -1,0 +1,64 @@
+package sec01;
+
+import javax.swing.*; //클래스, 인터페이스 포함, 하위 패키지는 포함하지 않음
+import java.awt.*; //배치관리자 정의
+import java.awt.event.*; // 리스너 인터페이스 정의
+
+
+ //1. 독립된 클래스 정의 : 리스너 인터페이스 구현
+class My1 implements ActionListener{
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// 실행할 코드 작성
+		//System.out.println("확인 버튼 눌렀군요");
+		JButton btn = (JButton)e.getSource();
+		if(btn.getText().equals("확인"))
+			btn.setText("OK");
+		else
+			btn.setText("확인");
+	}
+	
+}
+
+class My2 implements ActionListener{
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		//실행할 코드 작성
+		System.out.println("취소 버튼 눌렀군요");
+	}
+	
+}
+
+public class EventTest1 extends JFrame{
+	
+	//멤버변수
+	JButton btn1, btn2;
+	
+	//생성자
+	EventTest1() {
+		setTitle("독립된 클래스로 이벤트 리스너 만들기");
+		setLayout(new FlowLayout());
+		
+		//컴포넌트 생성
+		btn1 = new JButton("확인");
+		btn2 = new JButton("취소");
+		//컴포넌트 부착
+		add(btn1);
+		add(btn2);
+		//2. 리스너 등록
+		//My1 m1 = new My1();
+		btn1.addActionListener(new My1());
+		btn2.addActionListener(new My2());
+		
+		setSize(300,300);
+		setVisible(true);
+	}
+
+	public static void main(String[] args) {
+		new EventTest1();
+		
+	}
+
+}

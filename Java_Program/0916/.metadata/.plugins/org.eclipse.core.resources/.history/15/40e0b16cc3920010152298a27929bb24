@@ -1,0 +1,32 @@
+package sec01;
+
+public class Circle {
+	String name;
+	int radius;
+	
+	Circle(String name, int radius){
+		this.name=name;
+		this.radius=radius;
+	}
+
+	String getName() {
+		return name;
+	}
+	
+	int gerRadius() {
+		return radius;
+	}
+	
+	double getArea() {
+		return Math.PI*r*r;
+	}
+	
+	double getPerimeter() {
+		
+	}
+	
+	void getPrint() {
+		
+	}
+
+}

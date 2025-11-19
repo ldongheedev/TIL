@@ -1,0 +1,67 @@
+package sec02;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class MyPhoto extends JFrame {
+
+	//멤버변수 정의
+	JLabel lblTitle, lblImg;
+	JButton btn;
+	boolean flag = false;
+	
+	//생성자
+	MyPhoto(){
+		setTitle("이미지 보이기");
+		
+		//컴포넌트 생성
+		lblTitle = new JLabel("가을단풍", SwingConstants.CENTER);
+		
+		//이미지 불러오기
+		ImageIcon p1 = new ImageIcon("p1.PNG");
+		ImageIcon p2 = new ImageIcon("p2.PNG");
+		
+		lblImg = new JLabel(p1);
+		btn = new JButton("변경");
+		
+		Font f = new Font("", Font.BOLD, 30);
+		lblTitle.setFont(f);
+		lblTitle.setForeground(Color.red);
+		btn.setFont(f);
+		btn.setForeground(Color.red);
+		
+		btn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				//이미지 변경 코드
+				if(flag == false) {
+					lblImg.setIcon(p2);
+					flag = true;
+				}
+				else {
+					lblImg.setIcon(p1);
+					flag = false;
+				}
+					
+				
+				
+			}
+			
+		});
+		
+		//컴포넌트 부착
+		add(lblTitle, "North");
+		add(lblImg, "Center");
+		add(btn, "South");
+		
+		setSize(500, 500);
+		setVisible(true);
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		new MyPhoto();
+	}
+
+}

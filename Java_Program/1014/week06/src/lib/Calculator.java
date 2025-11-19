@@ -1,0 +1,10 @@
+package lib;
+
+public abstract class Calculator {
+	//추상메소드, 일반메소드
+	//덧셈, 뺄셈, 평균, .....
+	public abstract int add(int a, int b);
+	public abstract int sub(int a, int b);
+	public abstract double nanu(int a, int b);
+	public abstract double avg(int[] arr); //평균
+}

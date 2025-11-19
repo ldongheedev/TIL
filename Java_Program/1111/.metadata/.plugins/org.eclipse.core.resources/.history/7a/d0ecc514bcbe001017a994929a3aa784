@@ -1,0 +1,65 @@
+package sec01;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class MyInfo extends JFrame {
+
+    // 멤버변수
+    JButton btn1, btn2;
+    JLabel label; // 텍스트를 표시할 라벨 추가
+
+    // 생성자
+    MyInfo() {
+        setTitle("버튼 클릭 시 텍스트 출력");
+        setLayout(new FlowLayout());
+
+        // 컴포넌트 생성
+        btn1 = new JButton("나의 이름");
+        btn2 = new JButton("나의 꿈");
+        label = new JLabel(""); // 초기에는 빈 문자열
+        
+        //컴포넌트 글자모양 변경
+        Font f = new Font("", Font.BOLD,15);
+        
+        btn1.setFont(f);
+        btn2.setFont(f);
+        label.setFont(f);
+
+        // 컴포넌트 부착
+        add(btn1);
+        add(btn2);
+        add(label); // 라벨 추가
+        
+
+        // 리스너 등록
+        btn1.addActionListener(new My1());
+        btn2.addActionListener(new My2());
+
+        setSize(300, 300);
+        setVisible(true);
+    }
+
+    // 버튼1 리스너: 이름 출력
+    class My1 implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            label.setText("나의 이름은 나신구입니다.");
+            label.setForeground(Color.blue);
+        }
+    }
+
+    // 버튼2 리스너: 꿈 출력
+    class My2 implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            label.setText("나의 꿈은 프로그래머입니다.");
+            label.setForeground(Color.red);
+        }
+    }
+
+    public static void main(String[] args) {
+        new MyInfo();
+    }
+}

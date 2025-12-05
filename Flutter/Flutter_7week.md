@@ -207,6 +207,6 @@ Widget createS6() {
           Expanded(child: Container(color: Colors.blue)),
         ],
       ),
-    ),
+    ),ㅇ햣
   );
 }

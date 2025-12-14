@@ -1,0 +1,96 @@
+package sec04;
+
+import javax.swing.*;
+import java.awt.*;
+import java.io.*;
+import java.util.Arrays;
+import java.util.HashMap;
+
+public class Login extends JFrame{
+
+    JTextField id;
+    JPasswordField pw;
+    JButton login, cancel;   
+    HashMap<String, String> user = new HashMap<>();   // 사용자 정보 저장
+
+    public Login() {
+        setTitle("로그인");
+        setSize(350, 200);        
+        // 파일에서 아이디와 비밀번호 읽어서 해시맵 저장
+        readLoginFile();   
+        JPanel panel = new JPanel(new GridLayout(3, 2));
+        panel.add(new JLabel("ID : "));
+        id = new JTextField();
+        panel.add(id);
+
+        panel.add(new JLabel("PW : "));
+        pw = new JPasswordField();
+        panel.add(pw);
+        login = new JButton("로그인");
+        cancel = new JButton("취소");           
+        // 리스너 등록
+        // ** 코드 작성
+        
+
+        
+        panel.add(login);
+        panel.add(cancel);
+        add(panel);       
+        Font f = new Font("맑은 고딕", Font.BOLD, 20);
+        // ★ 패널에 들어 있는 모든 컴포넌트 폰트 변경
+        setPanelFont(panel, f);       
+        setVisible(true);        
+    }
+
+    void setPanelFont(JPanel panel, Font font) {
+        for (Component comp : panel.getComponents()) 
+            comp.setFont(font);
+        
+    }
+    private void readLoginFile() {
+        try {
+        	FileReader in=new FileReader("login.txt");
+            BufferedReader br = new BufferedReader(in);
+            String line;
+            //** 코드 작성 : 파일내용을 불러오와서  해시맵에 저장하기
+            
+
+            
+            
+            
+            br.close();
+            System.out.println("파일 로드 완료: " + user);   // (확인용)
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    // 로그인 검사
+    void checkLogin() {
+        String inputId;
+        char[] correctPw, spw;
+        String msg;
+
+        inputId = id.getText().trim();
+        spw = pw.getPassword();
+        // ** 코드 작성 : 로그인 인증 처리
+
+    
+    
+    }
+    
+    void message(String text) {
+    	JOptionPane.showMessageDialog(null,text);
+    }
+
+    void checkCancel() {
+        id.setText("");
+        pw.setText("");
+        id.requestFocus();
+    }
+
+    public static void main(String[] args) {
+        new Login();
+    }
+}

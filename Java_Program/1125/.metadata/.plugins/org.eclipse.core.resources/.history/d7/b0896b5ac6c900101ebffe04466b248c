@@ -1,0 +1,62 @@
+package sec02;
+
+import java.io.*;
+import java.util.*;
+
+public class CSVTest2 {
+
+	public static void main(String[] args) throws IOException {
+		
+		//해시맵 생성 :  파일의 내용을 해시맵에 저장하기
+		//키(한글이름), 값(소속부서)
+		HashMap<String, String> map = new HashMap<>();
+		
+		// 파일 객체 생성
+		FileReader in = new FileReader("java.csv");
+		//System.out.println((char)in.read());
+		BufferedReader bin = new BufferedReader(in); 
+		String line, key, value;
+		System.out.println(bin.readLine());
+		while((line = bin.readLine()) != null) {
+			System.out.println(line);
+			String[] str = line.split(",");
+			key = str[0].trim();
+			value = str[2];
+			map.put(key,value); //추가
+		}
+		System.out.println(map);
+		
+		//전체 점수의 합계 출력
+		
+		//전체 조회
+		for(String k:map.keySet())
+			System.out.println(k + " : " + map.get(k) + "점");
+		//이름 -> 부서
+		Scanner s = new Scanner(System.in);
+		
+		while(true) {
+			System.out.println("학번을 입력하시오");
+			key = s.next(); 
+			if(key.equals("q")) {
+				break;
+			}
+			if (map.containsKey(key)){//value == null
+				System.out.println("점수 : " + map.get(key));
+			}else {
+				System.out.println("not Found");
+			}
+		}
+		
+		
+		/*
+		while(true) {
+			line = bin.readLine();
+			if(line == null) {
+				break;
+			}
+			System.out.println(line);
+		}
+		*/
+	}
+}
+

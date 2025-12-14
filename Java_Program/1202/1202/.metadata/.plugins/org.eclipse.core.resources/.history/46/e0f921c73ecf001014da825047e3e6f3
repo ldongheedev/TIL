@@ -1,0 +1,24 @@
+package sec01;
+
+class Student {
+    String photo, id, name; // 사진, 학번, 이름
+    int mid, fin;           // 중간고사, 기말고사
+
+    Student(String photo, String id, String name, int mid, int fin) {
+        this.photo = photo;
+        this.id = id;
+        this.name = name;
+        this.mid = mid;
+        this.fin = fin;
+    }
+
+    // 합계 점수 구하기
+    int getTotal() {
+        return mid + fin;
+    }
+
+    // 평균 점수 구하기
+    double getAverage() {
+        return (mid + fin) / 2.0;
+    }
+}

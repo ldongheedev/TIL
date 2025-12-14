@@ -1,0 +1,28 @@
+package sec02;
+
+import java.io.*;
+
+public class CSVTest {
+
+	public static void main(String[] args) throws IOException {
+		// 파일 객체 생성
+		FileReader in = new FileReader("sample.csv");
+		//System.out.println((char)in.read());
+		BufferedReader bin = new BufferedReader(in); 
+		String line;
+		System.out.println(bin.readLine());
+		while((line = bin.readline()) != null) {
+			System.out.println(line);
+		}
+		/*
+		while(true) {
+			line = bin.readLine();
+			if(line == null) {
+				break;
+			}
+			System.out.println(line);
+		}
+		*/
+	}
+
+}

@@ -1,0 +1,14 @@
+package sec01;
+
+class Student {
+    String photo, id, name; // 사진, 학번, 이름
+    int mid, fin; // 중간고사, 기말고사
+
+    Student(String photo, String id, String name, int mid, int fin) {
+        this.photo = photo;
+        this.id = id;
+        this.name = name;
+        this.mid = mid;
+        this.fin = fin;
+    }
+}

@@ -1,0 +1,31 @@
+package sec02;
+
+// 스레드 클래스 정의
+
+class MyThread1 extends Thread{
+	
+	public void run() {
+		for(int i = 1; i <= 10; i++) {
+			System.out.println(i);
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+	
+}
+
+public class ThreadTest {
+
+	public static void main(String[] args) {
+		//스레드 객체 생서
+		MyThread1 t = new MyThread1();
+		
+		//스레드 시작
+		t.start();
+	}
+
+}

@@ -1,0 +1,21 @@
+package sec01;
+
+import java.io.*;
+
+public class FileReaderTest {
+
+	public static void main(String[] args) throws IOException {
+		
+		// 파일 객체 생성
+		FileReader in = new FileReader("test.txt");
+		int ch;
+		
+		//파일 내용 읽기
+		//	System.out.print((char)in.read());
+		
+		ch = in.read();
+		System.out.println((char)ch);
+
+	}
+
+}

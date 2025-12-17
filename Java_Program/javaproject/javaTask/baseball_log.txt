@@ -1,0 +1,76 @@
+
+
+=== 게임 종료 기록 (Tue Dec 16 13:28:26 KST 2025) ===
+정답 숫자: [8, 2, 7]
+경과 시간: 41초
+--------------------------
+369 -> Out
+124 -> 1 Strike, 0 Ball
+157 -> 1 Strike, 0 Ball
+827 -> 3 Strike! 정답입니다!
+========================
+
+
+=== 게임 종료 기록 (Tue Dec 16 13:35:26 KST 2025) ===
+정답 숫자: [8, 2, 9, 3]
+경과 시간: 336초
+--------------------------
+1234 -> 1 Strike, 1 Ball
+5678 -> 0 Strike, 1 Ball
+9247 -> 1 Strike, 1 Ball
+9253 -> 2 Strike, 1 Ball
+9523 -> 1 Strike, 2 Ball
+9152 -> 0 Strike, 2 Ball
+9352 -> 0 Strike, 3 Ball
+1253 -> 2 Strike, 0 Ball
+4253 -> 2 Strike, 0 Ball
+9153 -> 1 Strike, 1 Ball
+1293 -> 3 Strike, 0 Ball
+6293 -> 3 Strike, 0 Ball
+8293 -> 4 Strike! 정답입니다!
+========================
+
+
+=== 게임 종료 기록 (Tue Dec 16 13:57:01 KST 2025) ===
+정답 숫자: [9, 3, 4]
+경과 시간: 135초
+--------------------------
+123 -> 0 Strike, 1 Ball
+456 -> 0 Strike, 1 Ball
+789 -> 0 Strike, 1 Ball
+259 -> 0 Strike, 1 Ball
+482 -> 0 Strike, 1 Ball
+673 -> 0 Strike, 1 Ball
+517 -> Out
+349 -> 0 Strike, 3 Ball
+934 -> 3 Strike! 정답입니다!
+========================
+
+
+=== 게임 종료 기록 (Wed Dec 17 17:11:19 KST 2025) ===
+정답 숫자: [7, 1, 8, 2]
+경과 시간: 163초
+--------------------------
+1234 -> 0 Strike, 2 Ball
+5678 -> 0 Strike, 2 Ball
+4321 -> 0 Strike, 2 Ball
+3467 -> 0 Strike, 1 Ball
+4367 -> 0 Strike, 1 Ball
+6743 -> 0 Strike, 1 Ball
+7364 -> 1 Strike, 0 Ball
+7812 -> 2 Strike, 2 Ball
+7218 -> 1 Strike, 3 Ball
+7182 -> 4 Strike! 정답입니다!
+========================
+
+
+=== 게임 종료 기록 (Wed Dec 17 17:13:31 KST 2025) ===
+정답 숫자: [9, 2, 1, 5]
+경과 시간: 55초
+--------------------------
+1234 -> 1 Strike, 1 Ball
+5678 -> 0 Strike, 1 Ball
+9248 -> 2 Strike, 0 Ball
+9217 -> 3 Strike, 0 Ball
+9215 -> 4 Strike! 정답입니다!
+========================

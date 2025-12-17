@@ -1,0 +1,309 @@
+package javaTask; // 1. 패키지 선언 추가
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
+
+/**
+ * 1. 제네릭과 컬렉션을 사용하는 게임 로직 클래스
+ * 이 클래스도 javaTask 패키지에 속하게 됩니다.
+ */
+class GameLogic {
+    private List<Integer> secretNumber;
+    private ArrayList<String> gameHistory; 
+    private static final int DIGIT = 3; 
+
+    public GameLogic() {
+        secretNumber = generateSecretNumber(); 
+        gameHistory = new ArrayList<>();
+    }
+
+    private List<Integer> generateSecretNumber() {
+        List<Integer> numbers = new ArrayList<>();
+        for (int i = 1; i <= 9; i++) {
+            numbers.add(i);
+        }
+        Collections.shuffle(numbers);
+        return numbers.subList(0, DIGIT); 
+    }
+
+    public List<Integer> parseGuess(String guess) throws IllegalArgumentException {
+        if (guess.length() != DIGIT) {
+            throw new IllegalArgumentException(DIGIT + "자리의 숫자를 입력해야 합니다.");
+        }
+        
+        List<Integer> guessList = new ArrayList<>();
+        for (char c : guess.toCharArray()) {
+            int digit = Character.getNumericValue(c);
+            if (digit < 1 || digit > 9) {
+                throw new IllegalArgumentException("1~9 사이의 숫자만 입력 가능합니다.");
+            }
+            if (guessList.contains(digit)) {
+                throw new IllegalArgumentException("중복된 숫자는 입력할 수 없습니다.");
+            }
+            guessList.add(digit);
+        }
+        return guessList;
+    }
+
+    public String checkGuess(List<Integer> guessList) {
+        int strike = 0;
+        int ball = 0;
+
+        for (int i = 0; i < DIGIT; i++) {
+            if (guessList.get(i).equals(secretNumber.get(i))) {
+                strike++; 
+            } else if (secretNumber.contains(guessList.get(i))) {
+                ball++; 
+            }
+        }
+
+        String result;
+        if (strike == DIGIT) {
+            result = DIGIT + " Strike! 정답입니다!";
+        } else if (strike > 0 || ball > 0) {
+            result = strike + " Strike, " + ball + " Ball";
+        } else {
+            result = "Out";
+        }
+        
+        String historyEntry = guessList.get(0) + "" + guessList.get(1) + "" + guessList.get(2) + " -> " + result;
+        gameHistory.add(historyEntry); 
+        
+        return historyEntry;
+    }
+    
+    public List<Integer> getSecretNumber() {
+        return secretNumber;
+    }
+    
+    public ArrayList<String> getGameHistory() {
+        return gameHistory;
+    }
+
+    public boolean isWin(String result) {
+        return result.contains(DIGIT + " Strike");
+    }
+}
+
+/**
+ * 2. 스레드를 이용한 타이머 구현
+ * 이 클래스도 javaTask 패키지에 속하게 됩니다.
+ */
+class GameTimer extends Thread {
+    private JLabel timerLabel;
+    private int seconds = 0;
+    private volatile boolean isRunning = true; 
+
+    public GameTimer(JLabel timerLabel) {
+        this.timerLabel = timerLabel;
+    }
+    
+    public void stopTimer() {
+        isRunning = false;
+        this.interrupt(); 
+    }
+
+    @Override
+    public void run() {
+        while (isRunning) {
+            try {
+                Thread.sleep(1000); 
+                seconds++;
+                SwingUtilities.invokeLater(() -> {
+                    timerLabel.setText(String.format("경과 시간: %d초", seconds));
+                });
+            } catch (InterruptedException e) {
+                if (isRunning) {
+                   Thread.currentThread().interrupt(); 
+                }
+                break;
+            }
+        }
+    }
+}
+
+/**
+ * 3. 메인 GUI 클래스 (JavaTask로 이름 변경)
+ */
+public class JavaTask extends JFrame { // 2. 클래스 이름 변경
+    
+    // GUI 컴포넌트
+    private JTextField inputField;
+    private JButton guessButton;
+    private JTextArea resultArea;
+    private JLabel statusLabel;
+    private JLabel timerLabel;
+    private JScrollPane scrollPane; 
+
+    private GameLogic logic;
+    private GameTimer timer;
+
+    public JavaTask() { // 3. 생성자 이름 변경
+        setTitle("숫자 야구 게임 (3자리)");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(400, 500);
+        setLayout(new BorderLayout(10, 10)); 
+
+        // 폰트 설정
+        Font mainFont = new Font("맑은 고딕", Font.PLAIN, 16);
+        Font titleFont = new Font("맑은 고딕", Font.BOLD, 20);
+
+        // 1. 상단 상태 패널
+        JPanel topPanel = new JPanel(new GridLayout(2, 1));
+        
+        statusLabel = new JLabel("새 게임을 시작하세요.", SwingConstants.CENTER);
+        statusLabel.setFont(titleFont);
+        topPanel.add(statusLabel);
+        
+        timerLabel = new JLabel("경과 시간: 0초", SwingConstants.CENTER);
+        timerLabel.setFont(mainFont);
+        topPanel.add(timerLabel);
+
+        add(topPanel, BorderLayout.NORTH);
+
+        // 2. 중앙 결과 표시 영역 (JTextArea + JScrollPane)
+        resultArea = new JTextArea("게임을 시작하려면 '새 게임' 버튼을 누르세요.\n", 15, 30);
+        resultArea.setEditable(false);
+        resultArea.setFont(mainFont);
+        scrollPane = new JScrollPane(resultArea); 
+        add(scrollPane, BorderLayout.CENTER);
+
+        // 3. 하단 입력 및 버튼 패널
+        JPanel bottomPanel = new JPanel(new BorderLayout(5, 5));
+        
+        inputField = new JTextField(10);
+        inputField.setFont(mainFont);
+        inputField.setHorizontalAlignment(JTextField.CENTER);
+        bottomPanel.add(inputField, BorderLayout.CENTER);
+
+        JPanel buttonPanel = new JPanel(new GridLayout(1, 2, 5, 5));
+        
+        guessButton = new JButton("추측");
+        guessButton.setFont(mainFont);
+        guessButton.setEnabled(false); 
+        guessButton.addActionListener(new GuessListener());
+        
+        JButton newGameButton = new JButton("새 게임");
+        newGameButton.setFont(mainFont);
+        newGameButton.addActionListener(new NewGameListener());
+        
+        buttonPanel.add(guessButton);
+        buttonPanel.add(newGameButton);
+        
+        bottomPanel.add(buttonPanel, BorderLayout.SOUTH); // BorderLayout.EAST -> BorderLayout.SOUTH로 수정 (하단 중앙 + 우측 정렬 유지)
+        
+        add(bottomPanel, BorderLayout.SOUTH);
+        
+        setVisible(true);
+        setLocationRelativeTo(null);
+    }
+    
+    // 추측 버튼 리스너
+    class GuessListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String guessStr = inputField.getText().trim();
+            inputField.setText("");
+            
+            try {
+                List<Integer> guessList = logic.parseGuess(guessStr);
+                
+                String result = logic.checkGuess(guessList);
+                
+                resultArea.append(">> " + result + "\n");
+                resultArea.setCaretPosition(resultArea.getDocument().getLength());
+                
+                if (logic.isWin(result)) {
+                    statusLabel.setText("🎉 정답! 게임 승리!");
+                    gameEnd(true);
+                }
+
+            } catch (IllegalArgumentException ex) {
+                // 5. JOptionPane 참조 업데이트
+                JOptionPane.showMessageDialog(JavaTask.this, 
+                                                ex.getMessage(), 
+                                                "입력 오류", 
+                                                JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
+
+    // 새 게임 버튼 리스너
+    class NewGameListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            // 기존 타이머 스레드 종료
+            if (timer != null && timer.isAlive()) {
+                timer.stopTimer();
+            }
+            
+            logic = new GameLogic();
+            
+            // GUI 상태 초기화
+            resultArea.setText("--- 새로운 게임 시작 (3자리, 중복 없음) ---\n");
+            statusLabel.setText("숫자를 맞춰보세요! (1~9)");
+            timerLabel.setText("경과 시간: 0초");
+            guessButton.setEnabled(true);
+            inputField.setEnabled(true);
+            inputField.requestFocusInWindow();
+            
+            // 타이머 스레드 시작
+            timer = new GameTimer(timerLabel);
+            timer.start();
+        }
+    }
+    
+    private void gameEnd(boolean isWin) {
+        if (timer != null) {
+            timer.stopTimer();
+        }
+
+        guessButton.setEnabled(false);
+        inputField.setEnabled(false);
+        
+        saveGameLog();
+        
+        if (isWin) {
+             JOptionPane.showMessageDialog(this, 
+                                            "정답을 맞췄습니다!\n게임 기록이 'baseball_log.txt'에 저장되었습니다.", 
+                                            "게임 종료", 
+                                            JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+
+    // 입출력(I/O) 기능 구현
+    private void saveGameLog() {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("baseball_log.txt", true))) { 
+            bw.write("\n\n=== 게임 종료 기록 (" + new java.util.Date() + ") ===\n");
+            bw.write("정답 숫자: " + logic.getSecretNumber().toString() + "\n");
+            bw.write(timerLabel.getText() + "\n");
+            bw.write("--------------------------\n");
+            
+            for (String log : logic.getGameHistory()) {
+                bw.write(log + "\n");
+            }
+            bw.write("========================\n");
+            
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, 
+                                            "게임 기록 저장 중 오류가 발생했습니다: " + e.getMessage(), 
+                                            "I/O 오류", 
+                                            JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+        }
+    }
+
+    public static void main(String[] args) {
+        // 4. main 메서드에서 실행 클래스 이름 업데이트
+        SwingUtilities.invokeLater(JavaTask::new); 
+    }
+}

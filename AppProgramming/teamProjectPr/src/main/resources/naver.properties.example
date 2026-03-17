@@ -1,0 +1,11 @@
+# Naver OAuth Configuration Template
+# Copy this file to src/main/resources/naver.properties and fill in actual values
+
+# Naver OAuth Client ID
+naver.client.id=your_naver_client_id_here
+
+# Naver OAuth Client Secret (if needed)
+naver.client.secret=your_naver_client_secret_here
+
+# Callback URL
+naver.callback.url=http://localhost:8090/teamProjectPr/naver_callback.jsp

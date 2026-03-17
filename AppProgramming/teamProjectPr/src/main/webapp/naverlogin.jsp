@@ -1,6 +1,7 @@
 <%@ page import="java.net.URLEncoder" %>
 <%@ page import="java.security.SecureRandom" %>
 <%@ page import="java.math.BigInteger" %>
+<%@ page import="com.config.NaverConfig" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
@@ -8,11 +9,10 @@
   </head>
   <body>
   <%
-    // ✨ 클라이언트 ID 설정
-    String clientId = "SzhvAQKSGeClXT4Qe7H2";
+    // ✨ properties 파일에서 설정값 로드
+    String clientId = NaverConfig.getClientId();
+    String callbackUrl = NaverConfig.getCallbackUrl();
     
-    // ✨ 콜백 URL 설정 (naver_callback.jsp로 지정)
-    String callbackUrl = "http://localhost:8090/teamProjectPr/naver_callback.jsp";
     String redirectURI = URLEncoder.encode(callbackUrl, "UTF-8");
     
     // CSRF 공격 방지를 위한 상태 토큰 생성

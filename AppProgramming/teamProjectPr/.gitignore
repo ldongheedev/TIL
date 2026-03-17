@@ -1,0 +1,49 @@
+# IDE
+.classpath
+.project
+.settings/
+.vscode/
+*.swp
+*.swo
+*~
+
+# IDE specific
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build
+/bin/
+/build/
+/target/
+.gradle/
+build/
+
+# Naver OAuth Configuration (민감 정보)
+src/main/resources/naver.properties
+src/main/resources/naver.properties.local
+src/main/resources/application.properties
+src/main/resources/application-*.properties
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+*.txt
+
+# Temporary files
+*.tmp
+*.bak
+*.backup
+
+# Database
+*.db
+*.sqlite
